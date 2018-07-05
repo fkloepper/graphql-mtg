@@ -1,6 +1,7 @@
 var express = require('express');
 var express_graphql = require('express-graphql');
 var { buildSchema } = require('graphql');
+var cors = require('cors')
 const fs = require('fs');
 
 // GraphQL schema
@@ -105,6 +106,7 @@ app.use('/graphql', express_graphql({
     rootValue: root,
     graphiql: true
 }));
+app.use(cors());
 app.listen(process.env.PORT || 4000, () => console.log('Express GraphQL Server Now Running On localhost:4000/graphql'));
 
 
